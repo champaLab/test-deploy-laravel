@@ -51,9 +51,9 @@ jobs:
           git config user.email "root@champalab.com"
       - name: change image tag to deploy prod
         run: |
-          sed "s|image: ghcr\.io/champalab/malaythong:[^ ]*|image: ghcr.io/champalab/malaythong:${GITHUB_SHA}|" k8s/prod/deployment.yaml > tmp_deployment.yaml
-          mv tmp_deployment.yaml k8s/prod/deployment.yaml
-          git add k8s/prod/deployment.yaml
+          sed "s|image: ghcr\.io/champalab/malaythong:[^ ]*|image: ghcr.io/champalab/malaythong:${GITHUB_SHA}|" k8s/deployment.yaml > tmp_deployment.yaml
+          mv tmp_deployment.yaml k8s/deployment.yaml
+          git add k8s/deployment.yaml
           git commit -m "[skip actions] 🤖 change prod docker image version to ${GITHUB_SHA}"
           git pull origin main --rebase
           git push
