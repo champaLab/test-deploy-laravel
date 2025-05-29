@@ -2,6 +2,8 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: laravel-nginx
+  namespace: prod
+
 data:
   nginx.conf: |
     user www-data;
