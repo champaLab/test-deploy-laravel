@@ -24,13 +24,13 @@ jobs:
           password: ${{ secrets.WORKFLOW_TOKEN }}
           logout: true
       - name: Pull the latest Docker image
-        run: docker pull ghcr.io/champalab/malaythong:latest || true
+        run: docker pull ghcr.io/champalab/laravel:latest || true
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ghcr.io/champalab/malaythong:${{ env.GITHUB_SHA }} --tag ghcr.io/champalab/malaythong:latest
+        run: docker build . --file Dockerfile --tag ghcr.io/champalab/laravel:${{ env.GITHUB_SHA }} --tag ghcr.io/champalab/laravel:latest
       - name: Push the Docker image
-        run: docker push ghcr.io/champalab/malaythong:${{ env.GITHUB_SHA }}
+        run: docker push ghcr.io/champalab/laravel:${{ env.GITHUB_SHA }}
       - name: Push the Docker image latest
-        run: docker push ghcr.io/champalab/malaythong:latest
+        run: docker push ghcr.io/champalab/laravel:latest
 
   # ==============
   # CD PORD task
@@ -51,7 +51,7 @@ jobs:
           git config user.email "root@champalab.com"
       - name: change image tag to deploy prod
         run: |
-          sed "s|image: ghcr\.io/champalab/malaythong:[^ ]*|image: ghcr.io/champalab/malaythong:${GITHUB_SHA}|" k8s/deployment.yaml > tmp_deployment.yaml
+          sed "s|image: ghcr\.io/champalab/laravel:[^ ]*|image: ghcr.io/champalab/laravel:${GITHUB_SHA}|" k8s/deployment.yaml > tmp_deployment.yaml
           mv tmp_deployment.yaml k8s/deployment.yaml
           git add k8s/deployment.yaml
           git commit -m "[skip actions] 🤖 change prod docker image version to ${GITHUB_SHA}"
