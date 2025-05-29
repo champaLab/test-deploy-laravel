@@ -31,7 +31,7 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               readOnly: true
         - name: app
-          image: ghcr.io/champalab/malaythong:96e68b0583100c68b47347151c70656d680a7f64
+          image: ghcr.io/champalab/malaythong:5640ac0fdc5efa836d78b00dfd61d5faf186b2e6
           imagePullPolicy: Always
           envFrom:
             - secretRef:
