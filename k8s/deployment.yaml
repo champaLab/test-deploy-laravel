@@ -29,7 +29,7 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               readOnly: true
         - name: app
-          image: xelonag/laravel:v1
+          image: ghcr.io/champalab/malaythong:latest
           imagePullPolicy: Always
           envFrom:
             - secretRef:
