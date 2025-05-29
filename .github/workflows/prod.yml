@@ -55,5 +55,5 @@ jobs:
           mv tmp_deployment.yaml k8s/prod/deployment.yaml
           git add k8s/prod/deployment.yaml
           git commit -m "[skip actions] 🤖 change prod docker image version to ${GITHUB_SHA}"
-          git pull origin master --rebase
+          git pull origin main --rebase
           git push
